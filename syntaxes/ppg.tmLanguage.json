@@ -1,0 +1,205 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Bruker Pulse Program",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#delays"
+		},
+		{
+			"include": "#definitions"
+		},
+		{
+			"include": "#PVM_parameters"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#lists"
+		},
+		{
+			"include": "#includes"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#MACROS"
+		},
+		{
+			"include": "#gradient_controll"
+		},
+		{
+			"include": "#bool_oop"
+		},
+		{
+			"include": "#list_types"
+		},
+		{
+			"include": "#transmitters"
+		},
+		{
+			"include": "#pulses"
+		}
+
+
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.ppg",
+				"match": "\\b(if|while|for|return|else|lo to|times|goto)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.ppg",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.ppg",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments":{
+			"name":"comment.line.ppg",
+			"begin": ";",
+			"end": "\n"
+		},
+		"delays":{
+			"patterns": [
+				{
+					"name":"variable",
+					"match": "\\b(([0-9])*u|([0-9])*m|d([0-9])*)\\b"
+				}
+
+			]	
+		},
+		"definitions":{
+			"patterns": [
+				{
+					"name":"keyword.other.ppg",
+					"match": "\\b(define|subr)\\b"
+				}
+
+			]
+
+		},
+		"PVM_parameters":{
+			"patterns": [
+				{
+					"name":"variable.ppg",
+					"match": "\\$([A-Za-z0-9_])*"
+				}
+
+			]
+		},
+		"operators":{
+			"patterns": [
+				{
+					"name":"keyword.operator.ppg",
+					"match": "(\\+|==)"
+				},
+				{
+					"match": "!=|<=|>=|==|<|>",
+					"name": "keyword.operator.comparison.c"
+				}
+
+			]
+		},
+		"lists":{
+			"patterns": [
+				{
+					"name":"entity.name.class.ppg",
+					"match": "\\blist|loopcounter\\b"
+				}
+
+			]
+		},
+		"includes":{
+			"patterns": [
+				{
+					"name":"meta.preprocessor.ppg",
+					"match": "#include"
+				}
+
+			]
+		},
+		"functions":{
+			"patterns": [
+				{
+					"name":"entity.name.function.ppg",
+					"match": "([A-Za-z0-9_])+\\([A-Za-z0-9_, ]*\\)"
+				}
+
+			]
+		},
+		"MACROS":{
+			"patterns": [
+				{
+					"name":"meta.preprocessor.ppg",
+					"match": "\\b(ADC_START|ADC_END|NOPH|gatepulse|INIT_DEVICES|GRAD_SYNC|gc_control|exit)\\b"
+				}
+
+			]
+		},
+		"gradient_controll":{
+			"patterns": [
+				{
+					"name":"keyword.other.ppg",
+					"match": "\\b(grad_shape|grad_off|grad_ramp)\\b"
+				}
+
+			]
+		},
+		"bool_oop":{
+			"patterns": [
+				{
+					"name":"keyword.other.ppg",
+					"match": "\\b(Yes|No)\\b"
+				}
+
+			]
+		},
+		"list_types":{
+			"patterns": [
+				{
+					"name":"keyword.other.ppg",
+					"match": "\\b(grad_scalar|phase|frequency)\\b"
+				}
+
+			]
+		},
+		"transmitters":{
+			"patterns": [
+				{
+					"name":"constant.numeric",
+					"match": "\\b(f[0-9]+)\\b"
+				}
+
+			]
+		},
+		"pulses":{
+			"patterns": [
+				{
+					"name":"constant.numeric",
+					"match": "\\b(p[0-9]+)\\b"
+				}
+
+			]
+		}
+		
+		
+	},
+	"scopeName": "source.ppg"
+}
