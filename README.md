@@ -1,4 +1,4 @@
-# Bruker pulse program syntax highliter README
+# Bruker pulse program syntax highliter
 
 
 
