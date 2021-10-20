@@ -6,7 +6,8 @@
 
 Simple syntax highlighitng for bruker ppg files for vs code.
 
-
+## Install
+Just copy the git repository to HOME/.vscode/extensions/
 
 ## Known Issues
 
