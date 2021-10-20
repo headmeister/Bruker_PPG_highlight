@@ -1,21 +1,19 @@
-# Bruker pulse program syntax highliter
+# Bruker Pulse program (.ppg) syntax highlighter
 
 
 
 ## Features
 
-Simple syntax highlighitng for bruker ppg files for vs code.
+Simple syntax highlighitng for bruker .ppg files for vs code.
 
 ## Install
 Just copy the git repository to HOME/.vscode/extensions/
 
 ## Known Issues
 
-Propably many, as this is in pre pre alpha stage of development.
+None
 
 ## Release Notes
-
-Users appreciate release notes as you update your extension.
 
 ### 0.0.1
 
