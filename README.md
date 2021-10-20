@@ -25,6 +25,11 @@ Added initial files
 * highlighting of macros
 * highlighting of gradient controls
 
+### 0.0.2
+* editted gradient highlighting
+* editted RF controll macro colors
+* editted function highlighing
+* editted gradshapes and RF shapes highlighting
 
 
 
