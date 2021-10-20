@@ -49,6 +49,9 @@
 		},
 		{
 			"include": "#pulses"
+		},
+		{
+			"include": "#list_operators"
 		}
 
 
@@ -57,7 +60,7 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.ppg",
-				"match": "\\b(if|while|for|return|else|lo to|times|goto)\\b"
+				"match": "\\b(#?if|while|for|return|else|lo to|times|goto|plusminus)\\b"
 			}]
 		},
 		"strings": {
@@ -90,6 +93,10 @@
 				{
 					"name":"keyword.other.ppg",
 					"match": "\\b(define|subr)\\b"
+				},
+				{
+					"name":"keyword.other.ppg",
+					"match": "#define\\b"
 				}
 
 			]
@@ -100,6 +107,10 @@
 				{
 					"name":"variable.ppg",
 					"match": "\\$([A-Za-z0-9_])*"
+				},
+				{
+					"name":"variable.ppg",
+					"match": "sp[0-9]+"
 				}
 
 			]
@@ -121,7 +132,7 @@
 			"patterns": [
 				{
 					"name":"entity.name.class.ppg",
-					"match": "\\blist|loopcounter\\b"
+					"match": "\\blist|loopcounter|delay\\b"
 				}
 
 			]
@@ -151,8 +162,8 @@
 		"MACROS":{
 			"patterns": [
 				{
-					"name":"meta.preprocessor.ppg",
-					"match": "\\b(ADC_START|ADC_END|NOPH|gatepulse|INIT_DEVICES|GRAD_SYNC|gc_control|exit|SWITCH_JOB[0-9]|NEXT_RG|RG_JOB[0-9]|INIT_DEVICES_JOBS)\\b"
+					"name":"invalid",
+					"match": "\\b(ADC_START(_JOB[0-9])?|ADC_END(_JOB[0-9])?|NOPH|gatepulse|INIT_DEVICES|GRAD_SYNC|gc_control|exit|SWITCH_JOB[0-9]|NEXT_RG|RG_JOB[0-9]|INIT_DEVICES_JOBS)\\b"
 				}
 
 			]
@@ -160,8 +171,27 @@
 		"gradient_controll":{
 			"patterns": [
 				{
-					"name":"keyword.other.ppg",
-					"match": "\\b(grad_shape|grad_off|grad_ramp)\\b"
+					
+					"match": "(\\b(grad_shape|grad_ramp)\\b{)(.*)(})",
+					"captures": {
+						"1":{"name":"keyword.other.ppg"},
+						"2":{"name":"keyword.other.ppg"},
+						"3":{"patterns":[
+								{
+									"match": "[A-Za-z0-9_]+\\(\\)",
+									"name":"entity.name.class.ppg"
+								}
+						]
+							
+						},
+						"4":{"name":"keyword.other.ppg"}
+						
+					}
+					
+				},
+				{
+					"match": "\\bgrad_off\\b",
+					"name": "keyword.other.ppg"
 				}
 
 			]
@@ -180,6 +210,14 @@
 				{
 					"name":"keyword.other.ppg",
 					"match": "\\b(grad_scalar|phase|frequency)\\b"
+				}
+
+			]
+		},"list_operators":{
+			"patterns": [
+				{
+					"name":"keyword.other.ppg",
+					"match": "(\\.store|\\.restore|\\.inc|\\.dec|\\.res)\\b"
 				}
 
 			]
