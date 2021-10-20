@@ -138,8 +138,12 @@
 		"functions":{
 			"patterns": [
 				{
-					"name":"entity.name.function.ppg",
-					"match": "([A-Za-z0-9_])+\\([A-Za-z0-9_, ]*\\)"
+					"match": "([A-Za-z0-9_]+\\()(.*?)(\\))",
+					"captures" : {
+						   "1" : { "name" : "entity.name.function.ppg" },
+						   "3" : { "name" : "entity.name.function.ppg" }
+					}
+						
 				}
 
 			]
@@ -148,7 +152,7 @@
 			"patterns": [
 				{
 					"name":"meta.preprocessor.ppg",
-					"match": "\\b(ADC_START|ADC_END|NOPH|gatepulse|INIT_DEVICES|GRAD_SYNC|gc_control|exit)\\b"
+					"match": "\\b(ADC_START|ADC_END|NOPH|gatepulse|INIT_DEVICES|GRAD_SYNC|gc_control|exit|SWITCH_JOB[0-9]|NEXT_RG|RG_JOB[0-9]|INIT_DEVICES_JOBS)\\b"
 				}
 
 			]
