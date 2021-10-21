@@ -61,7 +61,7 @@
 			},
 			{
 				"name": "keyword.control.ppg",
-				"match": "\\b(#if|#while)\\b"
+				"match": "(#if|#while)"
 			}
 		]
 		},
