@@ -42,9 +42,6 @@
 			"include": "#bool_oop"
 		},
 		{
-			"include": "#list_types"
-		},
-		{
 			"include": "#transmitters"
 		},
 		{
@@ -61,7 +58,12 @@
 			"patterns": [{
 				"name": "keyword.control.ppg",
 				"match": "\\b(#?if|while|for|return|else|lo to|times|goto|plusminus)\\b"
-			}]
+			},
+			{
+				"name": "keyword.control.ppg",
+				"match": "\\b(#if|#while)\\b"
+			}
+		]
 		},
 		"strings": {
 			"name": "string.quoted.double.ppg",
@@ -132,7 +134,16 @@
 			"patterns": [
 				{
 					"name":"entity.name.class.ppg",
-					"match": "\\blist|loopcounter|delay\\b"
+					"match": "(\\blist<)(.+)(>)",
+					"captures": {
+						"1":{"name": "entity.name.class.ppg"},
+						"2":{"name": "keyword.other.ppg"},
+						"3":{"name": "entity.name.class.ppg"}
+					}
+				},
+				{
+					"name":"entity.name.class.ppg",
+					"match": "\\bloopcounter|delay\\b"
 				}
 
 			]
@@ -205,15 +216,7 @@
 
 			]
 		},
-		"list_types":{
-			"patterns": [
-				{
-					"name":"keyword.other.ppg",
-					"match": "\\b(grad_scalar|phase|frequency)\\b"
-				}
-
-			]
-		},"list_operators":{
+		"list_operators":{
 			"patterns": [
 				{
 					"name":"keyword.other.ppg",
